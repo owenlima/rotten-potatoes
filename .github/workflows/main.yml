@@ -47,3 +47,9 @@ jobs:
           method: kubeconfig
           kubeconfig: ${{ secrets.K8S_KUBECONFIG }}
         
+      - name: Kubernetes set context
+        uses: Azure/k8s-set-context@v1.1
+        with:
+          images: owenlima/rotten-potatoes:${{ github.run_number }}
+          manifests: |
+            k8s/Deployment.yaml
